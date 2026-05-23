@@ -1341,10 +1341,13 @@ class OptimizedPDFKnowledgeBase:
             self.nlp = spacy.load("en_core_web_sm")
 
         self.embeddings = HuggingFaceEmbeddings(
-            model_name=EMBED_MODEL_NAME,
-            model_kwargs={"device": "cuda" if torch.cuda.is_available() else "cpu"},
-            encode_kwargs={"normalize_embeddings": True},
-        )
+    model_name=EMBED_MODEL_NAME,
+    model_kwargs={
+        "device": "cuda" if torch.cuda.is_available() else "cpu",
+        "local_files_only": False  # <-- Explicitly forces online downloading inside this thread
+    },
+    encode_kwargs={"normalize_embeddings": True},
+)
         self.kg = SemanticKnowledgeGraph(self.models_dir)
 
     # ──────────────────────────────────────────────────────────────────────
