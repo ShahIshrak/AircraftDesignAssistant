@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+# Force Hugging Face out of offline mode and enable online downloads
+import os
+os.environ["HF_HUB_OFFLINE"] = "0"
+os.environ["TRANSFORMERS_OFFLINE"] = "0"
+
 import nltk
 import streamlit as st
 
