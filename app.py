@@ -9,29 +9,29 @@ try:
 except LookupError:
     nltk.download('stopwords', quiet=True)
 
-"""
-app.py — Aircraft Design Assistant  (Streamlit front-end)
-==========================================================
-
-All design requirements are entered as free-form natural language in a
-single text box — exactly how AircraftDesignAssistant.start() expects them.
-No dropdowns, no number inputs, no selectboxes.
-
-The assistant's LLM (Stage 0) extracts every structured parameter from the
-text, so users just describe what they want in plain English.
-
-Pipeline (all inside AircraftDesignAssistant.start()):
-    Stage 0  — LLM extracts structured spec from free text
-    Stage 1  — Literature / reference design search
-    Stage 1b — LLM suggests airfoil candidates (wing + tail)
-    Stage 2a — AirfoilAnalysisAgent: XFOIL / panel analysis, wing candidates
-    Stage 2b — AirfoilAnalysisAgent: XFOIL / panel analysis, tail candidates
-    Stage 3  — Preliminary sizing (wing, tail, fuselage, propulsion)
-    Stage 3b — Engineering constraint search
-    Stage 4  — LLM synthesis → design assessment report
-
-Run:  streamlit run app.py
-"""
+# =============================================================================
+# app.py — Aircraft Design Assistant  (Streamlit front-end)
+# =============================================================================
+#
+# All design requirements are entered as free-form natural language in a
+# single text box — exactly how AircraftDesignAssistant.start() expects them.
+# No dropdowns, no number inputs, no selectboxes.
+#
+# The assistant's LLM (Stage 0) extracts every structured parameter from the
+# text, so users just describe what they want in plain English.
+#
+# Pipeline (all inside AircraftDesignAssistant.start()):
+#     Stage 0  — LLM extracts structured spec from free text
+#     Stage 1  — Literature / reference design search
+#     Stage 1b — LLM suggests airfoil candidates (wing + tail)
+#     Stage 2a — AirfoilAnalysisAgent: XFOIL / panel analysis, wing candidates
+#     Stage 2b — AirfoilAnalysisAgent: XFOIL / panel analysis, tail candidates
+#     Stage 3  — Preliminary sizing (wing, tail, fuselage, propulsion)
+#     Stage 3b — Engineering constraint search
+#     Stage 4  — LLM synthesis → design assessment report
+#
+# Run:  streamlit run app.py
+# =============================================================================
 
 import io
 import queue
